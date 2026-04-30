@@ -13,6 +13,10 @@ cask "voxtype" do
   app "Voxtype.app"
 
   postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Voxtype.app"],
+                   sudo: false
+
     binary = "#{appdir}/Voxtype.app/Contents/MacOS/voxtype-bin"
     if File.exist?(binary)
       FileUtils.ln_sf(binary, "#{HOMEBREW_PREFIX}/bin/voxtype")
