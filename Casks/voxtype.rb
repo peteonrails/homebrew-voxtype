@@ -5,9 +5,9 @@ cask "voxtype" do
   url "https://github.com/peteonrails/voxtype/releases/download/v#{version}/voxtype-#{version}-macos-universal.dmg"
   name "Voxtype"
   desc "Push-to-talk voice-to-text"
-  homepage "https://voxtype.io"
+  homepage "https://voxtype.io/"
 
-  depends_on macos: ">= :ventura"
+  depends_on macos: :ventura
 
   binary "voxtype"
 
