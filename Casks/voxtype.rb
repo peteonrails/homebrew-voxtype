@@ -7,7 +7,7 @@ cask "voxtype" do
   desc "Push-to-talk voice-to-text"
   homepage "https://voxtype.io"
 
-  depends_on macos: ">= :ventura"
+  depends_on macos: :ventura
 
   binary "voxtype"
 
