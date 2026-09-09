@@ -7,17 +7,17 @@ cask "voxtype" do
   desc "Push-to-talk voice-to-text"
   homepage "https://voxtype.io"
 
-  depends_on macos: ">= :ventura"
+  depends_on macos: :ventura
 
   binary "voxtype"
 
   # The published DMG is not yet signed or notarized, so Homebrew's quarantine
   # flag would make Gatekeeper refuse to run it. Drop this once the release
   # pipeline signs and notarizes the artifact.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{staged_path}/voxtype"],
-                   sudo: false
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args: ["-dr", "com.apple.quarantine", "{{staged_path}}/voxtype"],
+        sudo: false
   end
 
   uninstall quit: "io.voxtype.daemon"
